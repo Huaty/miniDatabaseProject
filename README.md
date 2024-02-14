@@ -9,10 +9,6 @@
 
    ```
 
-2. **Run Expo:**
-   ```bash
-   expo start --ios
-   ```
 
 
 >**Figma:**

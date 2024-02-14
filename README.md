@@ -22,7 +22,7 @@ So config file for DB connection will depend on your port, user, password, and d
    npm run start
    ```
 # Background
-Learning Matters! is a cutting-edge e-learning platform designed to provide personalized and engaging learning experiences to students with diverse interests and educational backgrounds. The platform features a vast array of courses ranging from beginner to advanced levels, encompassing various subjects. Through a structured curriculum, interactive lessons, and dynamic assessments, Learning Matters! aims to revolutionize the way students learn and engage with educational content. We've implemented an innovative feature to bolster student learning retention and engagement: a Spaced Repetition System (SRS) tailored to each lesson. This system is meticulously designed to schedule mini quizzes at strategically increasing intervals, enabling personalized revision sessions that adapt to each student's learning pace.
+Learning Matters! is a cutting-edge e-learning platform designed to provide personalized and engaging learning experiences to students with diverse interests and educational backgrounds. The platform features a vast array of courses ranging from beginner to advanced levels, encompassing various subjects. Through a structured curriculum, interactive lessons, and dynamic assessments, Learning Matters! aims to revolutionize the way students learn and engage with educational content. We've implemented an innovative feature to bolster student learning retention and engagement
 
 >**ER Diagram:**
 ```bash

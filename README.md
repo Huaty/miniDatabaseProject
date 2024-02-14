@@ -12,6 +12,7 @@
    npm run start-server
    ```
 3. **Please insert or run the SQL file first it is located in the Server folder:**
+   **I would recommend MYSQL Workbench**
 So config file for DB connection will depend on your port, user, password, and database.
 ```bash
    host: "localhost",port: "",user: "",password: "",database: "",

@@ -1,17 +1,22 @@
-# Database Project 
+# Database Project (Node Js)
 > **NOTE:** Steps how to begin
 
-
-1. **Do a npm install first :**
+1. **Do a npm install first for node modules:**
 
    ```bash
-   npm install
-
+   npm run setup
    ```
 
-
-
->**Figma:**
+2. **To Run the Server:**
+   ```bash
+   npm run start-server
+   ```
+2. **To Run the Application:**
+   ```bash
+   npm run start
+   ```
+   
+>**ER Diagram:**
 ```bash
-https://www.figma.com/file/20wK6Ev3Ackk9UXvW0F5VF/Untitled?type=design&node-id=15%3A220&mode=design&t=CBXAPh5gJ6bk5eti-1
+https://lucid.app/lucidchart/3c22f952-cda6-444b-b27a-08fd478dd35a/edit?viewport_loc=5502%2C-1164%2C3108%2C1592%2C0_0&invitationId=inv_6bd4666b-148c-4f9a-8f62-805e2009ce9b
 ```

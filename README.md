@@ -15,7 +15,8 @@
 So config file for DB connection will depend on your port, user, password, and database.
 ```bash
   host: "localhost",port: "",user: "",password: "",database: "",
-``bash
+``
+
 5. **To Run the Application:**
    ```bash
    npm run start

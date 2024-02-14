@@ -28,25 +28,47 @@ const StudentReport = () => {
     fetchResult();
   }, []);
 
-  console.log(results);
-
   return (
     <div>
       <Navbar />
       <div className="w-[100vw] flex justify-center items-center">
         ASSSESSMENT REPORT
       </div>
-      <h1>Student Report</h1>
-      <p>Student Id: {state.studentID}</p>
-      {results.map((result, index) => (
-        <div key={index}>
-          <div> {result.assessment_title}</div>
-          <div> {result.completed == 1 ? "True" : "False"}</div>
-          <div> {result.firstName}</div>
-          <div> {result.lastName}</div>
-          <div> {result.mark}</div>
+      <div className="w-[100vw] flex justify-center items-center mt-[20px] flex-col">
+        {" "}
+        <p>Student Id: {state.studentID}</p>
+        {results.length > 0 && (
+          <div>
+            <p>
+              Student Name: {results[0].firstName} {results[0].lastName}
+            </p>
+          </div>
+        )}
+        <div>
+          {results.length > 0 ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Completed</th>
+                  <th>Mark</th>
+                </tr>
+              </thead>
+              <tbody>
+                {results.map((result, index) => (
+                  <tr key={index}>
+                    <td>{result.assessment_title}</td>
+                    <td>{result.completed === 1 ? "True" : "False"}</td>
+                    <td>{result.mark}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No results found</p>
+          )}
         </div>
-      ))}
+      </div>
     </div>
   );
 };

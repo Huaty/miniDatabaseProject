@@ -4,21 +4,21 @@ import Navbar from "../components/navbar";
 
 import HomeButton from "../components/homeButton";
 
-import SubmitFrom from "../components/studentResult";
-
-function StudentList() {
-  const [students, setStudents] = useState([]);
+function AssessmentList() {
+  const [assessments, setAsessments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchStudents = async () => {
+    const fetchAssessment = async () => {
       setIsLoading(true);
       setError(null);
 
       try {
-        const response = await axios.get("http://localhost:8080/students");
-        setStudents(response.data);
+        const response = await axios.get(
+          "http://localhost:8080/studentAssessments"
+        );
+        setAsessments(response.data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -26,8 +26,11 @@ function StudentList() {
       }
     };
 
-    fetchStudents();
+    fetchAssessment();
   }, []);
+  assessments.map((assessment) => {
+    console.log(assessment.assessments_id);
+  });
 
   return (
     <div>
@@ -40,23 +43,21 @@ function StudentList() {
           <table className="border-[2px]">
             <thead className="border-[2px]">
               <tr className="border-[2px] ">
-                <th className="border-[2px] ">ID</th>
-                <th className="border-[2px] ">First Name</th>
-                <th className="border-[2px] ">Last Name</th>
-                <th className="border-[2px] ">Email</th>
-                <th className="border-[2px] ">Date of Birth</th>
+                <th className="border-[2px] ">Enrollment Id</th>
+                <th className="border-[2px] ">Assessment Id</th>
+                <th className="border-[2px] ">Completed</th>
+                <th className="border-[2px] ">Mark</th>
               </tr>
             </thead>
             <tbody>
-              {students.map((student) => (
-                <tr key={student.id} className="border-2">
-                  <td className="border-2">{student.id}</td>
-                  <td className="border-2">{student.firstName}</td>
-                  <td className="border-2">{student.lastName}</td>
-                  <td className="border-2">{student.email}</td>
+              {assessments.map((assessment) => (
+                <tr key={assessment.id} className="border-2">
+                  <td className="border-2">{assessment.enrollment_id}</td>
+                  <td className="border-2">{assessment.assessments_id}</td>
                   <td className="border-2">
-                    {new Date(student.dateofBirth).toLocaleDateString()}
+                    {assessment.completed == 1 ? "True" : "False"}
                   </td>
+                  <td className="border-2">{assessment.MARK}</td>
                 </tr>
               ))}
             </tbody>
@@ -66,12 +67,8 @@ function StudentList() {
       <div className="m-[10px]">
         <HomeButton />
       </div>
-
-      <div>
-        <SubmitFrom />
-      </div>
     </div>
   );
 }
 
-export default StudentList;
+export default AssessmentList;

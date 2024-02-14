@@ -4,21 +4,19 @@ import Navbar from "../components/navbar";
 
 import HomeButton from "../components/homeButton";
 
-import SubmitFrom from "../components/studentResult";
-
-function StudentList() {
-  const [students, setStudents] = useState([]);
+function EnrollmenttList() {
+  const [enrollments, setEnrollments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchStudents = async () => {
+    const fetchEnrollments = async () => {
       setIsLoading(true);
       setError(null);
 
       try {
-        const response = await axios.get("http://localhost:8080/students");
-        setStudents(response.data);
+        const response = await axios.get("http://localhost:8080/enrollments");
+        setEnrollments(response.data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -26,7 +24,7 @@ function StudentList() {
       }
     };
 
-    fetchStudents();
+    fetchEnrollments();
   }, []);
 
   return (
@@ -40,7 +38,6 @@ function StudentList() {
           <table className="border-[2px]">
             <thead className="border-[2px]">
               <tr className="border-[2px] ">
-                <th className="border-[2px] ">ID</th>
                 <th className="border-[2px] ">First Name</th>
                 <th className="border-[2px] ">Last Name</th>
                 <th className="border-[2px] ">Email</th>
@@ -48,14 +45,13 @@ function StudentList() {
               </tr>
             </thead>
             <tbody>
-              {students.map((student) => (
-                <tr key={student.id} className="border-2">
-                  <td className="border-2">{student.id}</td>
-                  <td className="border-2">{student.firstName}</td>
-                  <td className="border-2">{student.lastName}</td>
-                  <td className="border-2">{student.email}</td>
+              {enrollments.map((enrollment) => (
+                <tr key={enrollment.id} className="border-2">
+                  <td className="border-2">{enrollment.id}</td>
+                  <td className="border-2">{enrollment.student_id}</td>
+                  <td className="border-2">{enrollment.course_id}</td>
                   <td className="border-2">
-                    {new Date(student.dateofBirth).toLocaleDateString()}
+                    {new Date(enrollment.enrollmentDate).toLocaleDateString()}
                   </td>
                 </tr>
               ))}
@@ -66,12 +62,8 @@ function StudentList() {
       <div className="m-[10px]">
         <HomeButton />
       </div>
-
-      <div>
-        <SubmitFrom />
-      </div>
     </div>
   );
 }
 
-export default StudentList;
+export default EnrollmenttList;

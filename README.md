@@ -1,4 +1,4 @@
-# Database Project (Node Js)
+# Database Project (Node Js and Mysql)
 > **NOTE:** Steps how to begin
 
 1. **Do a npm install first for node modules:**

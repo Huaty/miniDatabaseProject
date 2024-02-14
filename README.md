@@ -15,7 +15,7 @@
 So config file for DB connection will depend on your port, user, password, and database.
 ```bash
   host: "localhost",port: "",user: "",password: "",database: "",
-``
+```
 
 5. **To Run the Application:**
    ```bash

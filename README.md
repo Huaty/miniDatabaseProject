@@ -13,13 +13,12 @@
    ```
 3. **Please insert or run the SQL file first it is located in the Server folder:**
 So config file for DB connection will depend on your port, user,password, database.
-   ```bash
   host: "localhost",
   port: "",
   user: "",
   password: "",
   database: "",
-   ```
+
 4. **To Run the Application:**
    ```bash
    npm run start

@@ -17,7 +17,7 @@ const StudentResult = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">Get Student Assessment Mark:</label>
         <input
           type="text"
           id="name"

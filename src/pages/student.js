@@ -4,7 +4,7 @@ import Navbar from "../components/navbar";
 
 import HomeButton from "../components/homeButton";
 
-import SubmitFrom from "../components/studentResult";
+import SubmitFromAssessment from "../components/studentResult";
 
 function StudentList() {
   const [students, setStudents] = useState([]);
@@ -32,10 +32,14 @@ function StudentList() {
   return (
     <div>
       <Navbar />
+      <div className="m-[10px]">
+        <HomeButton />
+      </div>
+
       {isLoading && <p>Loading students...</p>}
       {error && <p>Error: {error}</p>}
-      <div className="w-[100vw] flex justify-center items-center mt-[50px]">
-        {" "}
+      <div className="w-[100vw] flex justify-center items-center mt-[50px] flex-col">
+        <div className="text-[30px] mb-[10px]">Student List</div>{" "}
         {!isLoading && !error && (
           <table className="border-[2px]">
             <thead className="border-[2px]">
@@ -63,12 +67,8 @@ function StudentList() {
           </table>
         )}
       </div>
-      <div className="m-[10px]">
-        <HomeButton />
-      </div>
-
-      <div>
-        <SubmitFrom />
+      <div className="mt-[30px]">
+        <SubmitFromAssessment />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const studentRoutes = require("./routes/students");
 const enrollmentsRoutes = require("./routes/enrollments");
-const studentAssessmentRoutes = require("./routes/studentAssessment");
+const studentAssessmentRoutes = require("./routes/course");
 const studentResultRoutes = require("./routes/assessmentResult");
 
 const app = express();
@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use("/students", studentRoutes);
 app.use("/enrollments", enrollmentsRoutes);
-app.use("/studentAssessments", studentAssessmentRoutes);
+app.use("/courses", studentAssessmentRoutes);
 app.use("/studentResult", studentResultRoutes);
 
 app.listen(8080, () => {

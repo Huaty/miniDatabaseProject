@@ -26,10 +26,14 @@ function EnrollmenttList() {
 
     fetchEnrollments();
   }, []);
+  console.log(enrollments);
 
   return (
     <div>
       <Navbar />
+      <div className="m-[10px]">
+        <HomeButton />
+      </div>
       {isLoading && <p>Loading students...</p>}
       {error && <p>Error: {error}</p>}
       <div className="w-[100vw] flex justify-center items-center mt-[50px]">
@@ -40,16 +44,16 @@ function EnrollmenttList() {
               <tr className="border-[2px] ">
                 <th className="border-[2px] ">First Name</th>
                 <th className="border-[2px] ">Last Name</th>
-                <th className="border-[2px] ">Email</th>
-                <th className="border-[2px] ">Date of Birth</th>
+                <th className="border-[2px] ">Course Title</th>
+                <th className="border-[2px] ">Enrollment Date</th>
               </tr>
             </thead>
             <tbody>
               {enrollments.map((enrollment) => (
                 <tr key={enrollment.id} className="border-2">
-                  <td className="border-2">{enrollment.id}</td>
-                  <td className="border-2">{enrollment.student_id}</td>
-                  <td className="border-2">{enrollment.course_id}</td>
+                  <td className="border-2">{enrollment.firstName}</td>
+                  <td className="border-2">{enrollment.lastName}</td>
+                  <td className="border-2">{enrollment.courseTitle}</td>
                   <td className="border-2">
                     {new Date(enrollment.enrollmentDate).toLocaleDateString()}
                   </td>
@@ -58,9 +62,6 @@ function EnrollmenttList() {
             </tbody>
           </table>
         )}
-      </div>
-      <div className="m-[10px]">
-        <HomeButton />
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ const Homebutton = () => {
     <div>
       <button
         onClick={() => navigate("/")}
-        className="border-[4px] rounded-[10px] hover:bg-black hover:text-white"
+        className="border-[1px] border-black rounded-[10px] hover:bg-black hover:text-white p-[10px]"
       >
         Go back Home
       </button>

@@ -65,7 +65,7 @@ const StudentReport = () => {
               </tbody>
             </table>
           ) : (
-            <p>No results found</p>
+            <p>Student did not sign up for any courses!</p>
           )}
         </div>
       </div>

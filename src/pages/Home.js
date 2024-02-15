@@ -4,28 +4,27 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
 
+  const buttons = [
+    { name: "Student List", path: "/student" },
+    { name: "Enrollment", path: "/enrollment" },
+    { name: "Courses", path: "/courses" },
+  ];
+
   return (
-    <div className="w-[100vw]">
+    <div className="">
       <Navbar />
-      <div>Welcome home</div>
-      <button
-        onClick={() => navigate("/student")}
-        className="border-[1px] rounded-md"
-      >
-        Student
-      </button>
-      <button
-        onClick={() => navigate("/enrollment")}
-        className="border-[1px] rounded-md"
-      >
-        Enrollment
-      </button>
-      <button
-        onClick={() => navigate("/assessment")}
-        className="border-[1px] rounded-md"
-      >
-        Assessment
-      </button>
+      <div className="text-xl text-center my-5">Welcome Teacher!</div>
+      <div className="w-[100vw] flex justify-center items-center">
+        {buttons.map((button, index) => (
+          <button
+            key={index}
+            onClick={() => navigate(button.path)}
+            className="border-[1px] rounded-md m-[5px] p-[5px] hover:text-white hover:bg-black"
+          >
+            {button.name}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

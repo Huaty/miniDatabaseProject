@@ -1,4 +1,4 @@
-const db = require("../ config/db");
+const db = require("../config/db");
 
 async function getStudentDetailsWithEnrollment(studentId) {
   return new Promise((resolve, reject) => {

@@ -5,6 +5,7 @@ import Navbar from "../components/navbar";
 import HomeButton from "../components/homeButton";
 
 import SubmitFromAssessment from "../components/studentResult";
+import Piechart from "../components/pieChart";
 
 function StudentList() {
   const [students, setStudents] = useState([]);

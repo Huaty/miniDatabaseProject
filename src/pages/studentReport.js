@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/navbar";
-
+import Piechart from "../components/pieChart";
+import HomeButton from "../components/homeButton";
 const StudentReport = () => {
   const { state } = useLocation();
   const [results, setResults] = useState([]);
@@ -29,8 +30,11 @@ const StudentReport = () => {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <Navbar />
+      <div className="m-[10px]">
+        <HomeButton />
+      </div>
       <div className="w-[100vw] flex justify-center items-center">
         ASSSESSMENT REPORT
       </div>
@@ -38,7 +42,7 @@ const StudentReport = () => {
         {" "}
         <p>Student Id: {state.studentID}</p>
         {results.length > 0 && (
-          <div>
+          <div className="mb-[1vh] mt-[1vh]">
             <p>
               Student Name: {results[0].firstName} {results[0].lastName}
             </p>
@@ -46,20 +50,34 @@ const StudentReport = () => {
         )}
         <div>
           {results.length > 0 ? (
-            <table>
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Completed</th>
-                  <th>Mark</th>
+            <table className="border-[2px] border-black ">
+              <thead className="border-[2px] border-black ">
+                <tr className="border-[2px] border-black ">
+                  <th className="border-[2px] border-black ">Title</th>
+                  <th className="border-[2px] border-black ">Completed</th>
+                  <th className="border-[2px] border-black ">Mark</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="">
                 {results.map((result, index) => (
-                  <tr key={index}>
-                    <td>{result.assessment_title}</td>
-                    <td>{result.completed === 1 ? "True" : "False"}</td>
-                    <td>{result.mark}</td>
+                  <tr key={index} className="border-[2px] border-black ">
+                    <td className="border-[2px] border-black text-center p-[1vw]">
+                      {result.assessment_title}
+                    </td>
+                    <td className="border-[2px] border-black text-center">
+                      {result.completed === 1 ? "True" : "False"}
+                    </td>
+                    <td className="border-[2px] border-black text-center p-[1vw]">
+                      {result.mark}
+                    </td>
+                    <td className="border-[2px] border-black ">
+                      <div className="w-[10vw] ">
+                        <Piechart
+                          marks={result.mark}
+                          title={result.assessment_title}
+                        />
+                      </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -69,6 +87,7 @@ const StudentReport = () => {
           )}
         </div>
       </div>
+      <div className="mb-[100px]"></div>
     </div>
   );
 };

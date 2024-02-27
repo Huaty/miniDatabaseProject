@@ -39,22 +39,36 @@ function EnrollmenttList() {
       <div className="w-[100vw] flex justify-center items-center mt-[50px]">
         {" "}
         {!isLoading && !error && (
-          <table className="border-[2px]">
-            <thead className="border-[2px]">
-              <tr className="border-[2px] ">
-                <th className="border-[2px] ">First Name</th>
-                <th className="border-[2px] ">Last Name</th>
-                <th className="border-[2px] ">Course Title</th>
-                <th className="border-[2px] ">Enrollment Date</th>
+          <table className=" leading-normal shadow-md rounded-lg overflow-hidden">
+            <thead className="bg-blue-700 text-white">
+              <tr>
+                <th className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                  First Name
+                </th>
+                <th className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                  Last Name
+                </th>
+                <th className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                  Course Title
+                </th>
+                <th className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                  Enrollment Date
+                </th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="bg-white">
               {enrollments.map((enrollment) => (
-                <tr key={enrollment.id} className="border-2">
-                  <td className="border-2">{enrollment.firstName}</td>
-                  <td className="border-2">{enrollment.lastName}</td>
-                  <td className="border-2">{enrollment.courseTitle}</td>
-                  <td className="border-2">
+                <tr key={enrollment.id} className="hover:bg-gray-100">
+                  <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                    {enrollment.firstName}
+                  </td>
+                  <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                    {enrollment.lastName}
+                  </td>
+                  <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                    {enrollment.courseTitle}
+                  </td>
+                  <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
                     {new Date(enrollment.enrollmentDate).toLocaleDateString()}
                   </td>
                 </tr>

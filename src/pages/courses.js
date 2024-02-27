@@ -35,20 +35,32 @@ function CoursesList() {
       <div className="w-[100vw] flex justify-center items-center mt-[50px] flex-col">
         <div>Course List</div>{" "}
         {!isLoading && !error && (
-          <table className="border-[2px]">
-            <thead className="border-[2px]">
-              <tr className="border-[2px] ">
-                <th className="border-[2px] ">Courses Title</th>
-                <th className="border-[2px] ">Assessment Title</th>
-                <th className="border-[2px] ">Content</th>
+          <table className=" leading-normal shadow-md rounded-lg overflow-hidden">
+            <thead className="bg-blue-700 text-white">
+              <tr>
+                <th className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                  Courses Title
+                </th>
+                <th className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                  Assessment Title
+                </th>
+                <th className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                  Content
+                </th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="bg-white">
               {courses.map((course) => (
-                <tr className="border-2">
-                  <td className="border-2">{course.courseTitle}</td>
-                  <td className="border-2">{course.assessmentTitle}</td>
-                  <td className="border-2">{course.content}</td>
+                <tr key={course.id} className="hover:bg-gray-100">
+                  <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                    {course.courseTitle}
+                  </td>
+                  <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                    {course.assessmentTitle}
+                  </td>
+                  <td className="px-5 py-2 border-b border-gray-200 bg-white text-sm">
+                    {course.content}
+                  </td>
                 </tr>
               ))}
             </tbody>

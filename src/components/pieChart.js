@@ -25,6 +25,9 @@ const MarksPieChart = ({ marks, title }) => {
             plugins: {
               legend: { display: false }, // Omit legend for individual charts
               title: { display: true, text: ` ${title}: ${marks}` }, // Display mark and percentage as title
+              font: {
+                size: 24, // Increase title font size here
+              },
             },
           }}
         />

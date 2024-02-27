@@ -19,7 +19,7 @@ const Home = () => {
           <button
             key={index}
             onClick={() => navigate(button.path)}
-            className="border-[1px] rounded-md m-[5px] p-[5px] hover:text-white hover:bg-black"
+            className="text-lg font-semibold border-2 border-black rounded-xl hover:bg-black hover:text-white py-2 px-6 transition-colors duration-200 ease-in-out shadow-lg ml-[10px]"
           >
             {button.name}
           </button>

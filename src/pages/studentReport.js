@@ -17,7 +17,7 @@ const StudentReport = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:8080/studentResult/${state.studentID}`
+          `http://localhost:8080/studentResult/${state.studentID}/assessments`
         );
         setResults(response.data);
       } catch (error) {
@@ -50,28 +50,37 @@ const StudentReport = () => {
         )}
         <div>
           {results.length > 0 ? (
-            <table className="border-[2px] border-black ">
-              <thead className="border-[2px] border-black ">
-                <tr className="border-[2px] border-black ">
-                  <th className="border-[2px] border-black ">Title</th>
-                  <th className="border-[2px] border-black ">Completed</th>
-                  <th className="border-[2px] border-black ">Mark</th>
+            <table className="leading-normal shadow-lg rounded-lg overflow-hidden">
+              <thead className="bg-gray-800 text-white">
+                <tr>
+                  <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-semibold uppercase tracking-wider">
+                    Title
+                  </th>
+                  <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-semibold uppercase tracking-wider">
+                    Completed
+                  </th>
+                  <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-semibold uppercase tracking-wider">
+                    Mark
+                  </th>
+                  <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-semibold uppercase tracking-wider">
+                    Performance
+                  </th>
                 </tr>
               </thead>
-              <tbody className="">
+              <tbody className="bg-white">
                 {results.map((result, index) => (
-                  <tr key={index} className="border-[2px] border-black ">
-                    <td className="border-[2px] border-black text-center p-[1vw]">
+                  <tr key={index} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 border-b border-gray-200 bg-white text-sm text-center">
                       {result.assessment_title}
                     </td>
-                    <td className="border-[2px] border-black text-center">
-                      {result.completed === 1 ? "True" : "False"}
+                    <td className="px-6 py-4 border-b border-gray-200 bg-white text-sm text-center">
+                      {result.completed === 1 ? "Completed" : "Not Completed"}
                     </td>
-                    <td className="border-[2px] border-black text-center p-[1vw]">
+                    <td className="px-6 py-4 border-b border-gray-200 bg-white text-sm text-center">
                       {result.mark}
                     </td>
-                    <td className="border-[2px] border-black ">
-                      <div className="w-[10vw] ">
+                    <td className="px-6 py-4 border-b border-gray-200 bg-white text-sm">
+                      <div className="flex justify-center items-center ">
                         <Piechart
                           marks={result.mark}
                           title={result.assessment_title}

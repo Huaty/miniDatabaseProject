@@ -7,10 +7,6 @@
    npm run setup
    ```
 
-2. **To Run the Server:**
-   ```bash
-   npm run start-server
-   ```
 3. **Please insert or run the SQL file first it is located in the Server folder:** <br>
    **I would recommend MYSQL Workbench** <br>
 So config file for DB connection will depend on your port, user, password, and database.
@@ -18,9 +14,9 @@ So config file for DB connection will depend on your port, user, password, and d
    host: "localhost",port: "",user: "",password: "",database: "",
    ```
 
-4. **To Run the Application:**
+4. **To Run the Application and Server:**
    ```bash
-   npm run start
+   npm run dev
    ```
 # Background
 Learning Matters! is a cutting-edge e-learning platform designed to provide personalized and engaging learning experiences to students with diverse interests and educational backgrounds. The platform features a vast array of courses ranging from beginner to advanced levels, encompassing various subjects. Through a structured curriculum, interactive lessons, and dynamic assessments, Learning Matters! aims to revolutionize the way students learn and engage with educational content. We've implemented an innovative feature to bolster student learning retention and engagement

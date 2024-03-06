@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/navbar";
-
 import HomeButton from "../components/homeButton";
-
 import StudentButton from "../components/studentButton";
 
 function StudentList() {
@@ -30,11 +28,11 @@ function StudentList() {
   }, []);
 
   const handleNavigation = {
-    schedule: {
+    assessment: {
       navigate: "/studentAssessment",
       label: "Student Assessment",
     },
-    profile: {
+    schedule: {
       navigate: "/studentSchedule",
       label: "Student Schedule",
     },

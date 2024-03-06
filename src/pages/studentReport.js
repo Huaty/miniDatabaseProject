@@ -21,7 +21,7 @@ const StudentReport = () => {
         );
         setResults(response.data);
       } catch (error) {
-        setError(error.message);
+        console.log(error.message);
       } finally {
         setIsLoading(false);
       }

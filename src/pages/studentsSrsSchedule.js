@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/navbar";
-import Piechart from "../components/pieChart";
 import HomeButton from "../components/homeButton";
 const StudentReport = () => {
   const { state } = useLocation();

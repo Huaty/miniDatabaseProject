@@ -45,4 +45,9 @@ router.get("/:id/srsSchedule", async (req, res) => {
   }
 });
 
+router.get("/user/:userId/book/:bookId", (req, res) => {
+  const { userId, bookId } = req.params;
+  res.json({ userId, bookId });
+});
+
 module.exports = router;

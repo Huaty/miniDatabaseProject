@@ -8,6 +8,8 @@ const Home = () => {
     { name: "Student List", path: "/student" },
     { name: "Enrollment", path: "/enrollment" },
     { name: "Courses", path: "/courses" },
+    { name: "Assessment", path: "/assessment" },
+    { name: "Data Entry", path: "/dataEntry" },
   ];
 
   return (

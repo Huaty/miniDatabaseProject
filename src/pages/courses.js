@@ -15,7 +15,9 @@ function CoursesList() {
       setError(null);
 
       try {
-        const response = await axios.get("http://localhost:8080/courses");
+        const response = await axios.get(
+          "http://localhost:8080/courses/courseAssessment"
+        );
         setCourses(response.data);
       } catch (error) {
         setError(error.message);

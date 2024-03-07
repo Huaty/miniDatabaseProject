@@ -1,6 +1,6 @@
 const db = require("../config/db");
 
-async function getCourses() {
+async function getCoursesAssessment() {
   return new Promise((resolve, reject) => {
     db.connect((err, connection) => {
       if (err) return reject(err);
@@ -9,7 +9,8 @@ async function getCourses() {
       SELECT  
         c.courseName AS courseTitle, 
         a.assessmentTitle ,
-        a.content
+        a.content,
+        c.id
       FROM 
        assessments a
         JOIN 
@@ -23,5 +24,21 @@ async function getCourses() {
     });
   });
 }
+async function getCourses() {
+  return new Promise((resolve, reject) => {
+    db.connect((err, connection) => {
+      if (err) return reject(err);
 
-module.exports = { getCourses };
+      const query = `
+      SELECT  
+        courseName, id FROM courses`;
+
+      connection.query(query, (error, results) => {
+        connection.release();
+        if (error) return reject(error);
+        resolve(results);
+      });
+    });
+  });
+}
+module.exports = { getCourses, getCoursesAssessment };

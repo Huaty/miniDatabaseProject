@@ -10,6 +10,7 @@ const Home = () => {
     { name: "Courses", path: "/courses" },
     { name: "Assessment", path: "/assessment" },
     { name: "Data Entry", path: "/dataEntry" },
+    { name: "Data Entry2", path: "/dataEntry2" },
   ];
 
   return (

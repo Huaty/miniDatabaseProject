@@ -25,7 +25,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start-server": "nodemon server/server.js ",
-    "setup": "npm install && cd server && npm install"
+    "setup": "npm install && cd server && npm install",
+    "dev": "concurrently \"npm run start-server\" \"npm run start\""
   },
   "eslintConfig": {
     "extends": [

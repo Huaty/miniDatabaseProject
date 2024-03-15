@@ -249,12 +249,12 @@ use IE4791;
 
 
 
--- Insert Assessment 
+-- -- Insert Assessment 
 -- INSERT INTO assessmentProgress(enrollment_id, assessments_id, completed, mark)
 -- SELECT e.id, ca.id, FALSE, 0
 -- FROM enrollment e
 -- JOIN assessments ca ON e.course_id = ca.courses_id;
--- Insert Lesson 
+-- -- Insert Lesson 
 -- INSERT INTO lessonProgress(enrollment_id, lessons_id, completed, lastAccessed)
 -- SELECT e.id, ca.id, FALSE, null
 -- FROM enrollment e
@@ -265,28 +265,120 @@ use IE4791;
 
  
 
-SELECT * FROM students;
-SELECT * FROM courses;
-SELECT* from enrollment;
-SELECT * FROM assessments;
-SELECT * FROM assessmentProgress;
+-- SELECT * FROM courses;
+-- SELECT * from enrollment;
+-- SELECT * FROM assessments;
+-- SELECT * FROM students;
+-- SELECT * FROM assessmentProgress;
+-- CREATE INDEX idx_student_firstName ON students(firstName);
+-- SHOW INDEX FROM students;
+-- SELECT * FROM students ORDER BY firstName;
+-- SELECT * FROM STUDENTS;
+-- SELECT * FROM ENROLLMENT;
+-- SELECT * FROM students WHERE firstName = 'Ryan';
+-- DROP INDEX idx_student_firstName ON students;
+
+
+
+-- EXPLAIN SELECT * FROM students WHERE firstName = 'BingWei';
+
+
+-- CREATE VIEW StudentEnrollmentDetails AS
+-- SELECT s.id AS StudentID, CONCAT(s.firstName, ' ', s.lastName) AS StudentName, s.email, c.courseName, c.difficultyLevel, e.enrollmentDate
+-- FROM students s
+-- INNER JOIN enrollment e ON s.id = e.student_id
+-- INNER JOIN courses c ON e.course_id = c.id;
+
+-- CREATE VIEW CourseLessonContent AS
+-- SELECT c.courseName, l.lessonTitle, l.contentURL
+-- FROM courses c
+-- INNER JOIN lessons l ON c.id = l.courses_id;
+
+-- CREATE VIEW StudentAssessmentProgress AS
+-- SELECT s.id AS StudentID, CONCAT(s.firstName, ' ', s.lastName) AS StudentName, c.courseName, a.assessmentTitle, ap.completed, ap.MARK
+-- FROM students s
+-- INNER JOIN enrollment e ON s.id = e.student_id
+-- INNER JOIN courses c ON e.course_id = c.id
+-- INNER JOIN assessments a ON c.id = a.courses_id
+-- INNER JOIN assessmentProgress ap ON a.id = ap.assessments_id AND e.id = ap.enrollment_id;
 
 
 
 
-SHOW COLUMNS FROM STUDENTS;
-SHOW COLUMNS FROM courses;
-SHOW COLUMNS FROM enrollment;
-SHOW COLUMNS FROM lessons;
-SHOW COLUMNS FROM assessments;
-SHOW COLUMNS FROM lessonProgress;
-SHOW COLUMNS FROM assessmentProgress;
-SHOW COLUMNS FROM srsContent;
-SHOW COLUMNS FROM srsSchedule;
+
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2024-01-01' WHERE enrollment_id =10  AND lessons_id IN(9,10);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate, currentLevel)	VALUES
+-- (33,'2024-01-02',1),
+-- (34,'2024-01-06',1);
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 22 WHERE enrollment_id=10 and assessments_id=7 ;
+
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2023-12-25' WHERE enrollment_id =2  AND lessons_id IN(9);
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2023-12-31' WHERE enrollment_id =2  AND lessons_id IN(10,11);
+-- UPDATE lessonProgress SET lastAccessed = '2024-02-02' WHERE enrollment_id =2  AND lessons_id IN(12);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate,completed, currentLevel) VALUES (17,NULL,TRUE,3);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate, currentLevel)	VALUES
+-- (18,'2024-02-05',3),
+-- (19,'2024-02-10',2);
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 100 WHERE enrollment_id=2 and assessments_id=7 ;
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 80 WHERE enrollment_id=2 and assessments_id=8 ;
+
+
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2024-02-14' WHERE enrollment_id =5  AND lessons_id IN(1);
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2024-02-15' WHERE enrollment_id =5  AND lessons_id IN(2,3);
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2024-02-18' WHERE enrollment_id =5  AND lessons_id IN(4);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate,completed, currentLevel) VALUES (1,NULL,TRUE,3),(2,NULL,TRUE,3),(3,NULL,TRUE,3);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate, currentLevel)	VALUES
+-- (4,'2024-02-06',2);
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 70 WHERE enrollment_id=5 and assessments_id=1 ;
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 60 WHERE enrollment_id=5 and assessments_id=2 ;
+
+
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2024-02-15' WHERE enrollment_id =6  AND lessons_id IN(1);
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2024-03-01' WHERE enrollment_id =6  AND lessons_id IN(2,3);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate,completed, currentLevel) VALUES (5,NULL,TRUE,3),(6,NULL,TRUE,3);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate, currentLevel)VALUES (7,'2024-03-02',1);
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 90 WHERE enrollment_id=6 and assessments_id=1 ;
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 80 WHERE enrollment_id=6 and assessments_id=2 ;
+
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2023-11-15' WHERE enrollment_id =1  AND lessons_id IN(5);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate, currentLevel)	VALUES
+-- (9,'2023-11-17',1);
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 100 WHERE enrollment_id=1 and assessments_id=4 ;
+
+
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2024-04-15' WHERE enrollment_id =4  AND lessons_id IN(9,10);
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2024-04-20' WHERE enrollment_id =4  AND lessons_id IN(11,12);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate,completed, currentLevel) VALUES (21,NULL,TRUE,3);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate, currentLevel) VALUES
+-- (22,'2024-04-21',3),(23,'2024-04-23',2),(24,'2024-04-24',1);
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 100 WHERE enrollment_id=4 and assessments_id=7 ;
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 40 WHERE enrollment_id=4 and assessments_id=8 ;
+
+
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2024-06-15' WHERE enrollment_id =7  AND lessons_id IN(9,10);
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2024-06-20' WHERE enrollment_id =7  AND lessons_id IN(11,12);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate,completed, currentLevel) VALUES (25,NULL,TRUE,3);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate, currentLevel) VALUES
+-- (26,'2024-06-21',3),(27,'2024-06-23',2),(28,'2024-06-24',1);
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 30 WHERE enrollment_id=7 and assessments_id=7 ;
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 55 WHERE enrollment_id=7 and assessments_id=8 ;
+
+
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2023-12-15' WHERE enrollment_id =9  AND lessons_id IN(9,10);
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2023-12-20' WHERE enrollment_id =9  AND lessons_id IN(11,12);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate,completed, currentLevel) VALUES (29,NULL,TRUE,3);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate, currentLevel) VALUES
+-- (30,'2023-12-21',3),(31,'2023-12-23',2),(32,'2023-12-24',1);
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 55 WHERE enrollment_id=9 and assessments_id=7 ;
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 60 WHERE enrollment_id=9 and assessments_id=8 ;
 
 
 
-
-
-
-
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2023-12-15' WHERE enrollment_id =3  AND lessons_id IN(13,14);
+-- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2023-12-20' WHERE enrollment_id =3  AND lessons_id IN(15,16);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate,completed, currentLevel) VALUES (37,NULL,TRUE,3),(38,NULL,TRUE,3);
+-- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate, currentLevel) VALUES
+-- (39,'2024-01-23',2),(40,'2024-01-24',1);
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 55 WHERE enrollment_id=3 and assessments_id=10 ;
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 70 WHERE enrollment_id=3 and assessments_id=11 ;
+-- UPDATE assessmentProgress SET Completed = TRUE, MARK = 80 WHERE enrollment_id=3 and assessments_id=12 ;

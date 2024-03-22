@@ -260,52 +260,7 @@ use IE4791;
 -- FROM enrollment e
 -- JOIN lessons ca ON e.course_id = ca.courses_id;
 
-
-
-
- 
-
--- SELECT * FROM courses;
--- SELECT * from enrollment;
--- SELECT * FROM assessments;
--- SELECT * FROM students;
--- SELECT * FROM assessmentProgress;
--- CREATE INDEX idx_student_firstName ON students(firstName);
--- SHOW INDEX FROM students;
--- SELECT * FROM students ORDER BY firstName;
--- SELECT * FROM STUDENTS;
--- SELECT * FROM ENROLLMENT;
--- SELECT * FROM students WHERE firstName = 'Ryan';
--- DROP INDEX idx_student_firstName ON students;
-
-
-
--- EXPLAIN SELECT * FROM students WHERE firstName = 'BingWei';
-
-
--- CREATE VIEW StudentEnrollmentDetails AS
--- SELECT s.id AS StudentID, CONCAT(s.firstName, ' ', s.lastName) AS StudentName, s.email, c.courseName, c.difficultyLevel, e.enrollmentDate
--- FROM students s
--- INNER JOIN enrollment e ON s.id = e.student_id
--- INNER JOIN courses c ON e.course_id = c.id;
-
--- CREATE VIEW CourseLessonContent AS
--- SELECT c.courseName, l.lessonTitle, l.contentURL
--- FROM courses c
--- INNER JOIN lessons l ON c.id = l.courses_id;
-
--- CREATE VIEW StudentAssessmentProgress AS
--- SELECT s.id AS StudentID, CONCAT(s.firstName, ' ', s.lastName) AS StudentName, c.courseName, a.assessmentTitle, ap.completed, ap.MARK
--- FROM students s
--- INNER JOIN enrollment e ON s.id = e.student_id
--- INNER JOIN courses c ON e.course_id = c.id
--- INNER JOIN assessments a ON c.id = a.courses_id
--- INNER JOIN assessmentProgress ap ON a.id = ap.assessments_id AND e.id = ap.enrollment_id;
-
-
-
-
-
+-- -- Insert Records 
 -- UPDATE lessonProgress SET completed=TRUE, lastAccessed = '2024-01-01' WHERE enrollment_id =10  AND lessons_id IN(9,10);
 -- INSERT INTO srsSchedule (lessonProgress_id ,nextReviewDate, currentLevel)	VALUES
 -- (33,'2024-01-02',1),
@@ -382,3 +337,65 @@ use IE4791;
 -- UPDATE assessmentProgress SET Completed = TRUE, MARK = 55 WHERE enrollment_id=3 and assessments_id=10 ;
 -- UPDATE assessmentProgress SET Completed = TRUE, MARK = 70 WHERE enrollment_id=3 and assessments_id=11 ;
 -- UPDATE assessmentProgress SET Completed = TRUE, MARK = 80 WHERE enrollment_id=3 and assessments_id=12 ;
+
+
+-- -- Query
+-- SELECT * FROM courses;
+-- SELECT * from enrollment;
+-- SELECT * FROM assessments;
+-- SELECT * FROM students;
+-- SELECT * FROM assessmentProgress;
+-- CREATE INDEX idx_student_firstName ON students(firstName);
+-- SHOW INDEX FROM students;
+-- SELECT * FROM students ORDER BY firstName;
+-- SELECT * FROM STUDENTS;
+-- SELECT * FROM ENROLLMENT;
+-- SELECT * FROM students WHERE firstName = 'Ryan';
+-- DROP INDEX idx_student_firstName ON students;
+
+
+-- -- Create View
+-- CREATE VIEW StudentEnrollmentDetails AS
+-- SELECT s.id AS StudentID, CONCAT(s.firstName, ' ', s.lastName) AS StudentName, s.email, c.courseName, c.difficultyLevel, e.enrollmentDate
+-- FROM students s
+-- INNER JOIN enrollment e ON s.id = e.student_id
+-- INNER JOIN courses c ON e.course_id = c.id;
+
+-- CREATE VIEW CourseLessonContent AS
+-- SELECT c.courseName, l.lessonTitle, l.contentURL
+-- FROM courses c
+-- INNER JOIN lessons l ON c.id = l.courses_id;
+
+-- CREATE VIEW StudentAssessmentProgress AS
+-- SELECT s.id AS StudentID, CONCAT(s.firstName, ' ', s.lastName) AS StudentName, c.courseName, a.assessmentTitle, ap.completed, ap.MARK
+-- FROM students s
+-- INNER JOIN enrollment e ON s.id = e.student_id
+-- INNER JOIN courses c ON e.course_id = c.id
+-- INNER JOIN assessments a ON c.id = a.courses_id
+-- INNER JOIN assessmentProgress ap ON a.id = ap.assessments_id AND e.id = ap.enrollment_id;
+
+
+
+-- CREATE OR REPLACE VIEW CoursesWithAllLessonsCompletedByStudent AS
+-- SELECT
+--     s.firstName,
+--     s.lastName,
+--     s.email
+-- FROM
+--     students s
+--     JOIN enrollment e ON s.id = e.student_id
+-- WHERE
+--     e.course_id = (SELECT id FROM courses WHERE courseName = 'Beginner Spanish')
+--     AND NOT EXISTS (
+--         SELECT 1
+--         FROM lessons l
+--         LEFT JOIN lessonProgress lp ON l.id = lp.lessons_id AND lp.enrollment_id = e.id
+--         WHERE l.courses_id = (SELECT id FROM courses WHERE courseName = 'Beginner Spanish')
+--             AND (lp.completed = FALSE OR lp.completed IS NULL)
+--     );
+-- select * from lessonProgress;
+
+-- CREATE INDEX idx_lessonProgress_lessons_id ON lessonProgress (lessons_id);
+
+--  Select enrollment_id from lessonprogress where lessons_id = 1;
+--  select * from students;
